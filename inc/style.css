@@ -73,7 +73,13 @@ td { vertical-align: top; }
 /* ===== Primary Styles ========================================================
    Author:
    ========================================================================== */
-
+svg { border:solid 1px black; }
+svg rect { fill: #CCC; }
+svg rect.on { fill:#000; }
+table.output th { text-align:right; padding:0 5px; }
+.code { font-family:monospace; white-space:pre; }
+.code span { display:inline-block; margin:0; padding:2px 1px; }
+.code .highlight { background-color:#FF8; }
 
 
 /* =============================================================================
