@@ -1,0 +1,1 @@
+Based on the video specifications (http://pastie.org/pastes/3772655/text?key=xw0dmiwx5khzoagoemyww) for the DCPU-16, this GUI lets you create your own characters for use in visual programs.
