@@ -61,6 +61,19 @@
 			<tr><th>Hex:</th><td><span class="code">0x<span id="h11">0</span><span id="h12">0</span><span id="h13">0</span><span id="h14">0</span> 0x<span id="h21">0</span><span id="h22">0</span><span id="h23">0</span><span id="h24">0</span></span></td></tr>
 		</table>
 		<p>This is a visual character creator for the DCPU-16, a fictitious, virtual CPU used in the upcoming <a href="http://0x10c.com" rel="external">0x10<sup>c</sup> game</a> by <a href="https://twitter.com/#!/notch" rel="external">Notch</a>. The DCPU-16 has a default <a href="http://0x10cwiki.com/wiki/Video_RAM" rel="external">video memory</a> address space, and an address space for defining the shape of the characters drawn on the screen. There is a default alphabet defined (like <a href="#7e097e00" title="0x7e09 0x7e00">this letter 'A'</a>), but written programs can redefine them to create custom characters, and in the future there may be the option for sprite sheets and more advanced control of the individual pixels of the screen.</p>
+		<div style="padding:5px 0; background-color:rgba(255,255,255,0.4);">
+			<!-- AddThis Button BEGIN -->
+			<div class="addthis_toolbox addthis_default_style" style="width:160px; margin:0 auto;">
+			<a class="addthis_button_preferred_1"></a>
+			<a class="addthis_button_preferred_2"></a>
+			<a class="addthis_button_preferred_3"></a>
+			<a class="addthis_button_preferred_4"></a>
+			<a class="addthis_button_compact"></a>
+			<a class="addthis_counter addthis_bubble_style"></a>
+			</div>
+			<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f621f1b17bbce83"></script>
+			<!-- AddThis Button END -->
+		</div>
 		</div></div>
 	<div class="full">
 		<p>To use, draw the character you wish to represent in the grid above. Then take the hexadecimal output (two "words" in DCPU-16 assembly) and put them the proper location to be accessed for video RAM use (address <span class="code">0x8180</span> is character 0, <span class="code">0x8182</span> is character 1, all the way to <span class="code">0x8280</span>.)</p>
@@ -76,6 +89,17 @@
 		<p class="footer">Built by <a href="http://midnightdesign.ws">MidnightLightning</a> <a href="#122a86c2" title="0x122a 0x86c2">&#9735;</a></p>
 	</div>
 </div>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-1815995-3']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="inc/jquery-1.7.1.min.js"><\/script>')</script>
 <script src="inc/plugins.js"></script>
