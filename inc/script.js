@@ -49,6 +49,13 @@ $(document).ready(function() {
 	if (window.location.hash && window.location.hash.length == 9) {
 		loadHash(window.location.hash.substr(1));
 	}
+	if (Modernizr.hashchange) {
+		$(window).on('hashchange', function(e) {
+			if (window.location.hash && window.location.hash.length == 9) {
+				loadHash(window.location.hash.substr(1));
+			}
+		});
+	}
 	
 	function loadHash(hash) {
 		var $bins = $('span.code span[id^="b"]');
@@ -56,7 +63,7 @@ $(document).ready(function() {
 			$(this).html('0');
 		});
 		var $rects = $('svg rect');
-		$bins.each(function(i) {
+		$rects.each(function(i) {
 			$(this).attr('class', '');
 		});
 
