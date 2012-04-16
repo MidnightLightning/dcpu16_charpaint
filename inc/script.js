@@ -1,4 +1,11 @@
 $(document).ready(function() {
+	// Handle external links
+	$("a[rel*='external']").click(function(event) {
+		event.preventDefault(); // Keep from following standard href of link
+		new_win = window.open($(this).attr('href'), 'offsite_popup') // Pop up a window to that URL
+		if (window.focus) { new_win.focus() } // Give it focus if possible
+	});
+	
 	// Setup events
 	$('svg#charmap rect')
 		.css('cursor', 'pointer')
@@ -179,6 +186,8 @@ $(document).ready(function() {
 		$('span#h24').html(hex.toString(16));
 		hash += hex.toString(16);
 		
+		$('span#code1').html(hash.substr(0,4));
+		$('span#code2').html(hash.substr(4,4));
 		window.location.hash = hash;
 	}
 });

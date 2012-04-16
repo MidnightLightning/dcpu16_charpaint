@@ -76,20 +76,25 @@ td { vertical-align: top; }
 body { background-color:#000; background-image:url('flare.jpg'); background-position:center center; background-attachment:fixed; background-repeat:no-repeat; }
 div#wrapper { width:960px; margin:0 auto; padding:0; background-color:rgba(0,0,0,0.8); color:#FFF; }
 div#wrapper a { color:#F80; text-decoration:none; }
+div#wrapper .svg-warning table { background-color:rgba(255,0,0, 0.3); font-weight:bold; font-size:125%; color:#FCC; }
+div#wrapper .svg-warning a { color:#F00; }
+.inlinesvg .svg-warning { display:none; } /* Hide warning on browsers that support inline SVG */
 div.col { width:350px; float:left; }
 div.full { padding:10px 30px; }
 svg { border:solid 1px black; }
 svg rect { fill: #CCC; stroke-width:1px; stroke:#BBB; }
 svg rect.on { fill:#F80; stroke:#A60; }
-table.output { font-size:125%; }
+table.output { font-size:125%; border:solid 1px #F80; width:100%; }
 table.output th { text-align:right; padding:0 5px; }
 .code { font-family:monospace; white-space:pre; }
 .code span { display:inline-block; margin:0; padding:1px 0px; }
 .code .highlight { background-color:rgba(255,255,100,0.4); }
-div#wrapper .svg-warning table { background-color:rgba(255,0,0, 0.3); font-weight:bold; font-size:125%; color:#FCC; }
-div#wrapper .svg-warning a { color:#F00; }
-.inlinesvg .svg-warning { display:none; } /* Hide warning on browsers that support inline SVG */
+div#wrapper p.footer { text-align:right; color:#666; }
+div#wrapper p.footer a { color:#999; }
 
+pre { margin-left:2em; background-color:rgba(0,0,0, 0.4); padding:10px; border:solid 1px #666; color:#FFF; font-weight:bold; }
+pre.source.assembly .comment { color:#6CF; }
+pre.source.assembly .opcode { color:#c6c; }
 
 /* =============================================================================
    Media Queries
