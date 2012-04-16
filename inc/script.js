@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	// Setup events
 	$('svg#charmap rect')
 		.css('cursor', 'pointer')
 		.on('mouseover', function(e) {
@@ -45,6 +46,68 @@ $(document).ready(function() {
 	$('body').on('mouseup', function(e) { // Capture mouseup anywhere on the body
 		$('svg#charmap').data('painting', false);
 	});
+	
+	// See if there's a valid charcode in the hash string
+	if (window.location.hash && window.location.hash.length == 9) {
+		loadHash(window.location.hash.substr(1));
+	}
+	
+	function loadHash(hash) {
+		var $bins = $('span.code span[id^="b"]');
+		$bins.each(function(i) {
+			$(this).html('0');
+		});
+		var $rects = $('svg rect');
+		$bins.each(function(i) {
+			$(this).attr('class', '');
+		});
+
+		var i = 0;
+		var hex = 0;
+		while (i <= 7) {
+			hex = parseInt(hash.substr(i,1), 16);
+			n = i/2+1;
+			if ((hex & 8) > 0) {
+				$bins.filter('#b'+n+'1').html('1');
+				$rects.filter('#'+n+'1').attr('class', 'on');
+			}
+			if ((hex & 4) != 0) {
+				$bins.filter('#b'+n+'2').html('1');
+				$rects.filter('#'+n+'2').attr('class', 'on');
+			}
+			if ((hex & 2) != 0) {
+				$bins.filter('#b'+n+'3').html('1');
+				$rects.filter('#'+n+'3').attr('class', 'on');
+			}
+			if ((hex & 1) != 0) {
+				$bins.filter('#b'+n+'4').html('1');
+				$rects.filter('#'+n+'4').attr('class', 'on');
+			}
+			i++;
+			
+			hex = parseInt(hash.substr(i,1), 16);
+			if ((hex & 8) != 0) {
+				$bins.filter('#b'+n+'5').html('1');
+				$rects.filter('#'+n+'5').attr('class', 'on');
+			}
+			if ((hex & 4) != 0) {
+				$bins.filter('#b'+n+'6').html('1');
+				$rects.filter('#'+n+'6').attr('class', 'on');
+			}
+			if ((hex & 2) != 0) {
+				$bins.filter('#b'+n+'7').html('1');
+				$rects.filter('#'+n+'7').attr('class', 'on');
+			}
+			if ((hex & 1) != 0) {
+				$bins.filter('#b'+n+'8').html('1');
+				$rects.filter('#'+n+'8').attr('class', 'on');
+			}
+			i++;
+		}
+		recalcHex();
+	}
+	
+	// Utility functions
 	function rectToHex(object) {
 		var high = parseInt(object.substr(0,1));
 		var low = parseInt(object.substr(1,1));
@@ -77,22 +140,40 @@ $(document).ready(function() {
 	}
 	function recalcHex() {
 		var $bins = $('span.code span[id^="b"]');
+		var hash = '';
+		
 		var hex = parseInt($bins.filter('#b11').html())*8 + parseInt($bins.filter('#b12').html())*4 + parseInt($bins.filter('#b13').html())*2 + parseInt($bins.filter('#b14').html());
 		$('span#h11').html(hex.toString(16));
+		hash += hex.toString(16);
+		
 		var hex = parseInt($bins.filter('#b15').html())*8 + parseInt($bins.filter('#b16').html())*4 + parseInt($bins.filter('#b17').html())*2 + parseInt($bins.filter('#b18').html());
 		$('span#h12').html(hex.toString(16));
+		hash += hex.toString(16);
+		
 		var hex = parseInt($bins.filter('#b21').html())*8 + parseInt($bins.filter('#b22').html())*4 + parseInt($bins.filter('#b23').html())*2 + parseInt($bins.filter('#b24').html());
 		$('span#h13').html(hex.toString(16));
+		hash += hex.toString(16);
+		
 		var hex = parseInt($bins.filter('#b25').html())*8 + parseInt($bins.filter('#b26').html())*4 + parseInt($bins.filter('#b27').html())*2 + parseInt($bins.filter('#b28').html());
 		$('span#h14').html(hex.toString(16));
+		hash += hex.toString(16);
+		
 		var hex = parseInt($bins.filter('#b31').html())*8 + parseInt($bins.filter('#b32').html())*4 + parseInt($bins.filter('#b33').html())*2 + parseInt($bins.filter('#b34').html());
 		$('span#h21').html(hex.toString(16));
+		hash += hex.toString(16);
+		
 		var hex = parseInt($bins.filter('#b35').html())*8 + parseInt($bins.filter('#b36').html())*4 + parseInt($bins.filter('#b37').html())*2 + parseInt($bins.filter('#b38').html());
 		$('span#h22').html(hex.toString(16));
+		hash += hex.toString(16);
+		
 		var hex = parseInt($bins.filter('#b41').html())*8 + parseInt($bins.filter('#b42').html())*4 + parseInt($bins.filter('#b43').html())*2 + parseInt($bins.filter('#b44').html());
 		$('span#h23').html(hex.toString(16));
+		hash += hex.toString(16);
+		
 		var hex = parseInt($bins.filter('#b45').html())*8 + parseInt($bins.filter('#b46').html())*4 + parseInt($bins.filter('#b47').html())*2 + parseInt($bins.filter('#b48').html());
 		$('span#h24').html(hex.toString(16));
-		console.log($bins);
+		hash += hex.toString(16);
+		
+		window.location.hash = hash;
 	}
 });
