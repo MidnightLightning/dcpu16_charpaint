@@ -86,6 +86,9 @@ table.output th { text-align:right; padding:0 5px; }
 .code { font-family:monospace; white-space:pre; }
 .code span { display:inline-block; margin:0; padding:1px 0px; }
 .code .highlight { background-color:rgba(255,255,100,0.4); }
+div#wrapper .svg-warning table { background-color:rgba(255,0,0, 0.3); font-weight:bold; font-size:125%; color:#FCC; }
+div#wrapper .svg-warning a { color:#F00; }
+.inlinesvg .svg-warning { display:none; } /* Hide warning on browsers that support inline SVG */
 
 
 /* =============================================================================
