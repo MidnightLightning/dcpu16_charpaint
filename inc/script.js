@@ -30,12 +30,10 @@ $(document).ready(function() {
 			var $rect = $(this);
 			var $svg = $rect.parent();
 			if ($rect.attr('class') == 'on') {
-				console.log("painting off");
 				$svg.data('paint', 'off');
 				$rect.attr('class', '');
 				$('span#b'+$rect.attr('id')).html('0');
 			} else {
-				console.log("painting on");
 				$svg.data('paint', 'on');
 				$rect.attr('class', 'on');
 				$('span#b'+$rect.attr('id')).html('1');
