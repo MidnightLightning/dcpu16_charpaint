@@ -73,13 +73,19 @@ td { vertical-align: top; }
 /* ===== Primary Styles ========================================================
    Author:
    ========================================================================== */
+body { background-color:#000; background-image:url('flare.jpg'); background-position:center center; background-attachment:fixed; background-repeat:no-repeat; }
+div#wrapper { width:960px; margin:0 auto; padding:0; background-color:rgba(0,0,0,0.8); color:#FFF; }
+div#wrapper a { color:#F80; text-decoration:none; }
+div.col { width:350px; float:left; }
+div.full { padding:10px 30px; }
 svg { border:solid 1px black; }
-svg rect { fill: #CCC; }
-svg rect.on { fill:#000; }
+svg rect { fill: #CCC; stroke-width:1px; stroke:#BBB; }
+svg rect.on { fill:#F80; stroke:#A60; }
+table.output { font-size:125%; }
 table.output th { text-align:right; padding:0 5px; }
 .code { font-family:monospace; white-space:pre; }
-.code span { display:inline-block; margin:0; padding:2px 1px; }
-.code .highlight { background-color:#FF8; }
+.code span { display:inline-block; margin:0; padding:1px 0px; }
+.code .highlight { background-color:rgba(255,255,100,0.4); }
 
 
 /* =============================================================================
