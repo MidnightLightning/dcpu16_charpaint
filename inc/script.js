@@ -189,5 +189,6 @@ $(document).ready(function() {
 		$('span#code1').html(hash.substr(0,4));
 		$('span#code2').html(hash.substr(4,4));
 		window.location.hash = hash;
+		$('span#share_link').html(window.location.href);
 	}
 });

@@ -61,6 +61,7 @@
 			<tr><th>Hex:</th><td><span class="code">0x<span id="h11">0</span><span id="h12">0</span><span id="h13">0</span><span id="h14">0</span> 0x<span id="h21">0</span><span id="h22">0</span><span id="h23">0</span><span id="h24">0</span></span></td></tr>
 		</table>
 		<p>This is a visual character creator for the DCPU-16, a fictitious, virtual CPU used in the upcoming <a href="http://0x10c.com" rel="external">0x10<sup>c</sup> game</a> by <a href="https://twitter.com/#!/notch" rel="external">Notch</a>. The DCPU-16 has a default <a href="http://0x10cwiki.com/wiki/Video_RAM" rel="external">video memory</a> address space, and an address space for defining the shape of the characters drawn on the screen. There is a default alphabet defined (like <a href="#7e097e00" title="0x7e09 0x7e00">this letter 'A'</a>), but written programs can redefine them to create custom characters, and in the future there may be the option for sprite sheets and more advanced control of the individual pixels of the screen.</p>
+		<p>Link to this character: <span class="code" id="share_link"></span></p>
 		<div style="padding:5px 0; background-color:rgba(255,255,255,0.4);">
 			<!-- AddThis Button BEGIN -->
 			<div class="addthis_toolbox addthis_default_style" style="width:160px; margin:0 auto;">
@@ -76,15 +77,15 @@
 		</div>
 		</div></div>
 	<div class="full">
-		<p>To use, draw the character you wish to represent in the grid above. Then take the hexadecimal output (two "words" in DCPU-16 assembly) and put them the proper location to be accessed for video RAM use (address <span class="code">0x8180</span> is character 0, <span class="code">0x8182</span> is character 1, all the way to <span class="code">0x8280</span>.)</p>
-		<p>Sample code (generates character drawn above; try it out on <a href="http://0x10co.de/" rel="external">0x10co.de</a>):</p>
+		<p>To use, draw the character you wish to represent in the grid above (gray is off, orange is on. Click a square to toggle its state. Click and drag to "paint" with that state). Then take the hexadecimal output (two "words" in DCPU-16 assembly) and put them the proper location to be accessed for video RAM use (address <span class="code">0x8180</span> is character 0, <span class="code">0x8182</span> is character 1, all the way to <span class="code">0x8280</span>.)</p>
+		<p>Sample code (generates character drawn above; try it out on <a href="http://www.0x10co.de/" rel="external">0x10co.de</a>):</p>
 <pre class="source assembly"><span class="comment">; Create custom character in slot 0</span>
 <span class="opcode">set</span> [0x8180], 0x<span id="code1">0354</span>
 <span class="opcode">set</span> [0x8181], 0x<span id="code2">a403</span>
 
 <span class="opcode">set</span> [0x8000], 0xf100 <span class="comment">; Character 0, White foreground, blue background</span>
 </pre>
-		<p><em>Note that this feature is not part of the DCPU-16 official specification yet!</em> It has been ascertained that this functionality will be available due to leaked JAR files, but may change quickly. This page will strive to keep up with the official specification, when it's officially released.</p>
+		<p><em>Note that this feature is not part of the DCPU-16 official specification yet!</em> It has been ascertained that this functionality will be available <a href="http://0x10cwiki.com/wiki/Video_RAM#Leaked_.jar_specification" rel="external">due to leaked JAR files</a>, but may change quickly. This page will strive to keep up with the official specification, when it's officially released.</p>
 		<hr />
 		<p class="footer">Built by <a href="http://midnightdesign.ws">MidnightLightning</a> <a href="#122a86c2" title="0x122a 0x86c2">&#9735;</a></p>
 	</div>
