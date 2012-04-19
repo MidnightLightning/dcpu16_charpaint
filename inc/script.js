@@ -155,31 +155,22 @@ $(document).ready(function() {
 	function rectToHex(object) {
 		var high = parseInt(object.substr(0,1));
 		var low = parseInt(object.substr(1,1));
-		if (high == 1) {
-			if (low <= 4) {
-				return '11';
-			} else {
-				return '12';
-			}
-		} else if (high == 2) {
-			if (low <= 4) {
-				return '13';
-			} else {
-				return '14';
-			}
-		} else if (high == 3) {
-			if (low <= 4) {
-				return '21';
-			} else {
-				return '22';
-			}
-		} else if (high == 4) {
-			if (low <= 4) {
-				return '23';
-			} else {
-				return '24';
-			}
+		if (parseInt(object.substr(1,1)) <= 4) {
+			var low = '1';
+		} else {
+			var low = '2';
 		}
+		
+		if (high == 1) {
+			return '1'+low;
+		} else if (high == 2) {
+			return '2'+low;
+		} else if (high == 3) {
+			return '3'+low;
+		} else if (high == 4) {
+			return '4'+low;
+		}
+		
 		return false;
 	}
 	
@@ -187,37 +178,15 @@ $(document).ready(function() {
 		var $bins = $('span.code span[id^="b"]');
 		var hash = '';
 		
-		var hex = parseInt($bins.filter('#b11').html())*8 + parseInt($bins.filter('#b12').html())*4 + parseInt($bins.filter('#b13').html())*2 + parseInt($bins.filter('#b14').html());
-		$('span#h11').html(hex.toString(16));
-		hash += hex.toString(16);
+		for (var i=1; i<=4; i++) {
+			var hex = parseInt($bins.filter('#b'+i+'1').html())*8 + parseInt($bins.filter('#b'+i+'2').html())*4 + parseInt($bins.filter('#b'+i+'3').html())*2 + parseInt($bins.filter('#b'+i+'4').html());
+			$('span#h'+i+'1').html(hex.toString(16));
+			hash += hex.toString(16);
 		
-		var hex = parseInt($bins.filter('#b15').html())*8 + parseInt($bins.filter('#b16').html())*4 + parseInt($bins.filter('#b17').html())*2 + parseInt($bins.filter('#b18').html());
-		$('span#h12').html(hex.toString(16));
-		hash += hex.toString(16);
-		
-		var hex = parseInt($bins.filter('#b21').html())*8 + parseInt($bins.filter('#b22').html())*4 + parseInt($bins.filter('#b23').html())*2 + parseInt($bins.filter('#b24').html());
-		$('span#h13').html(hex.toString(16));
-		hash += hex.toString(16);
-		
-		var hex = parseInt($bins.filter('#b25').html())*8 + parseInt($bins.filter('#b26').html())*4 + parseInt($bins.filter('#b27').html())*2 + parseInt($bins.filter('#b28').html());
-		$('span#h14').html(hex.toString(16));
-		hash += hex.toString(16);
-		
-		var hex = parseInt($bins.filter('#b31').html())*8 + parseInt($bins.filter('#b32').html())*4 + parseInt($bins.filter('#b33').html())*2 + parseInt($bins.filter('#b34').html());
-		$('span#h21').html(hex.toString(16));
-		hash += hex.toString(16);
-		
-		var hex = parseInt($bins.filter('#b35').html())*8 + parseInt($bins.filter('#b36').html())*4 + parseInt($bins.filter('#b37').html())*2 + parseInt($bins.filter('#b38').html());
-		$('span#h22').html(hex.toString(16));
-		hash += hex.toString(16);
-		
-		var hex = parseInt($bins.filter('#b41').html())*8 + parseInt($bins.filter('#b42').html())*4 + parseInt($bins.filter('#b43').html())*2 + parseInt($bins.filter('#b44').html());
-		$('span#h23').html(hex.toString(16));
-		hash += hex.toString(16);
-		
-		var hex = parseInt($bins.filter('#b45').html())*8 + parseInt($bins.filter('#b46').html())*4 + parseInt($bins.filter('#b47').html())*2 + parseInt($bins.filter('#b48').html());
-		$('span#h24').html(hex.toString(16));
-		hash += hex.toString(16);
+			var hex = parseInt($bins.filter('#b'+i+'5').html())*8 + parseInt($bins.filter('#b'+i+'6').html())*4 + parseInt($bins.filter('#b'+i+'7').html())*2 + parseInt($bins.filter('#b'+i+'8').html());
+			$('span#h'+i+'2').html(hex.toString(16));
+			hash += hex.toString(16);
+		}
 		
 		$('span#code1').html(hash.substr(0,4));
 		$('span#code2').html(hash.substr(4,4));
