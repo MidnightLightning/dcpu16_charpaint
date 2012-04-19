@@ -6,6 +6,38 @@ $(document).ready(function() {
 		if (window.focus) { new_win.focus() } // Give it focus if possible
 	});
 	
+	// Code sample customizations
+	$('select#glyphslot').on('change', function(e) {
+		var $this = $(this);
+		var val = parseInt($this.val());
+		var hex = val.toString(16);
+		$('span.charslot').html(("00"+hex).substring(hex.length, hex.length+2));
+		$('span.slotname').html($this.find('option:selected').text());
+
+		var memloc = 0x8180 + 2*val;
+		$('span#charmem1').html(memloc.toString(16));
+		$('span#charmem2').html((memloc+1).toString(16));
+	});
+	$('select#fgcolor').on('change', setColor);
+	$('select#bgcolor').on('change', setColor);
+	setColor(); // Set to initial state
+	
+	function setColor() {
+		var $fg = $('select#fgcolor');
+		var fgnum = parseInt($fg.val());
+		var fgname = $fg.find('option:selected').text();
+		
+		var $bg = $('select#bgcolor')
+		var bgnum = parseInt($bg.val());
+		var bgname = $bg.find('option:selected').text();
+		
+		var hex = (fgnum << 4) + bgnum
+		$('span#charcol').html(hex.toString(16));
+		$('span#fgname').html(fgname);
+		$('span#bgname').html(bgname);
+	}
+	
+	
 	// Setup events
 	$('svg#charmap rect')
 		.css('cursor', 'pointer')
@@ -150,6 +182,7 @@ $(document).ready(function() {
 		}
 		return false;
 	}
+	
 	function recalcHex() {
 		var $bins = $('span.code span[id^="b"]');
 		var hash = '';

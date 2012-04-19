@@ -79,11 +79,178 @@
 	<div class="full">
 		<p>To use, draw the character you wish to represent in the grid above (gray is off, orange is on. Click a square to toggle its state. Click and drag to "paint" with that state). Then take the hexadecimal output (two "words" in DCPU-16 assembly) and put them the proper location to be accessed for video RAM use (address <span class="code">0x8180</span> is character 0, <span class="code">0x8182</span> is character 1, all the way to <span class="code">0x8280</span>.)</p>
 		<p>Sample code (generates character drawn above; try it out on <a href="http://www.0x10co.de/" rel="external">0x10co.de</a>):</p>
-<pre class="source assembly"><span class="comment">; Create custom character in slot 0</span>
-<span class="opcode">set</span> [0x8180], 0x<span id="code1">0354</span>
-<span class="opcode">set</span> [0x8181], 0x<span id="code2">a403</span>
+		<p><strong>Customize:</strong> Glyph slot: <select id="glyphslot" style="margin-right:1em;">
+				<option value="0">00</option>
+				<option value="1">01</option>
+				<option value="2">02</option>
+				<option value="3">03</option>
+				<option value="4">04</option>
+				<option value="5">05</option>
+				<option value="6">06</option>
+				<option value="7">07</option>
+				<option value="8">08</option>
+				<option value="9">09</option>
+				<option value="10">0a</option>
+				<option value="11">0b</option>
+				<option value="12">0c</option>
+				<option value="13">0d</option>
+				<option value="14">0e</option>
+				<option value="15">0f</option>
+				<option value="16">10</option>
+				<option value="17">11</option>
+				<option value="18">12</option>
+				<option value="19">13</option>
+				<option value="20">14</option>
+				<option value="21">15</option>
+				<option value="22">16</option>
+				<option value="23">17</option>
+				<option value="24">18</option>
+				<option value="25">19</option>
+				<option value="26">1a</option>
+				<option value="27">1b</option>
+				<option value="28">1c</option>
+				<option value="29">1d</option>
+				<option value="30">1e</option>
+				<option value="31">1f</option>
+				<option value="32">20 ( )</option>
+				<option value="33">21 ()!)</option>
+				<option value="34">22 (")</option>
+				<option value="35">23 (#)</option>
+				<option value="36">24 ($)</option>
+				<option value="37">25 (%)</option>
+				<option value="38">26 (&amp;)</option>
+				<option value="39">27 (')</option>
+				<option value="40">28 "("</option>
+				<option value="41">29 ")"</option>
+				<option value="42">2a (*)</option>
+				<option value="43">2b (+)</option>
+				<option value="44">2c (,)</option>
+				<option value="45">2d (-)</option>
+				<option value="46">2e (.)</option>
+				<option value="47">2f (/)</option>
+				<option value="48">30 (0)</option>
+				<option value="49">31 (1)</option>
+				<option value="50">32 (2)</option>
+				<option value="51">33 (3)</option>
+				<option value="52">34 (4)</option>
+				<option value="53">35 (5)</option>
+				<option value="54">36 (6)</option>
+				<option value="55">37 (7)</option>
+				<option value="56">38 (8)</option>
+				<option value="57">39 (9)</option>
+				<option value="58">3a (:)</option>
+				<option value="59">3b (;)</option>
+				<option value="60">3c (&lt;)</option>
+				<option value="61">3d (=)</option>
+				<option value="62">3e (&gt;)</option>
+				<option value="63">3f (?)</option>
+				<option value="64">40 (@)</option>
+				<option value="65">41 (A)</option>
+				<option value="66">42 (B)</option>
+				<option value="67">43 (C)</option>
+				<option value="68">44 (D)</option>
+				<option value="69">45 (E)</option>
+				<option value="70">46 (F)</option>
+				<option value="71">47 (G)</option>
+				<option value="72">48 (H)</option>
+				<option value="73">49 (I)</option>
+				<option value="74">4a (J)</option>
+				<option value="75">4b (K)</option>
+				<option value="76">4c (L)</option>
+				<option value="77">4d (M)</option>
+				<option value="78">4e (N)</option>
+				<option value="79">4f (O)</option>
+				<option value="80">50 (P)</option>
+				<option value="81">51 (Q)</option>
+				<option value="82">52 (R)</option>
+				<option value="83">53 (S)</option>
+				<option value="84">54 (T)</option>
+				<option value="85">55 (U)</option>
+				<option value="86">56 (V)</option>
+				<option value="87">57 (W)</option>
+				<option value="88">58 (X)</option>
+				<option value="89">59 (Y)</option>
+				<option value="90">5a (Z)</option>
+				<option value="91">5b ([)</option>
+				<option value="92">5c (\)</option>
+				<option value="93">5d (])</option>
+				<option value="94">5e (^)</option>
+				<option value="95">5f (_)</option>
+				<option value="96">60 (`)</option>
+				<option value="97">61 (a)</option>
+				<option value="98">62 (b)</option>
+				<option value="99">63 (c)</option>
+				<option value="100">64 (d)</option>
+				<option value="101">65 (e)</option>
+				<option value="102">66 (f)</option>
+				<option value="103">67 (g)</option>
+				<option value="104">68 (h)</option>
+				<option value="105">69 (i)</option>
+				<option value="106">6a (j)</option>
+				<option value="107">6b (k)</option>
+				<option value="108">6c (l)</option>
+				<option value="109">6d (m)</option>
+				<option value="110">6e (n)</option>
+				<option value="111">6f (o)</option>
+				<option value="112">70 (p)</option>
+				<option value="113">71 (q)</option>
+				<option value="114">72 (r)</option>
+				<option value="115">73 (s)</option>
+				<option value="116">74 (t)</option>
+				<option value="117">75 (u)</option>
+				<option value="118">76 (v)</option>
+				<option value="119">77 (w)</option>
+				<option value="120">78 (x)</option>
+				<option value="121">79 (y)</option>
+				<option value="122">7a (z)</option>
+				<option value="123">7b ({)</option>
+				<option value="124">7c (|)</option>
+				<option value="125">7d (})</option>
+				<option value="126">7e (~)</option>
+				<option value="127">7f (&loz;)</option>
+			</select>
+			Foreground color: <select id="fgcolor" style="margin-right:1em;">
+				<option value="0">Black</option>
+				<option value="1">Blue</option>
+				<option value="2" selected>Green</option>
+				<option value="3">Cyan</option>
+				<option value="4">Red</option>
+				<option value="5">Magenta</option>
+				<option value="6">Yellow</option>
+				<option value="7">White</option>
+				<option value="8">Gray</option>
+				<option value="9">Bright Blue</option>
+				<option value="10">Bright Green</option>
+				<option value="11">Bright Cyan</option>
+				<option value="12">Bright Red</option>
+				<option value="13">Bright Magenta</option>
+				<option value="14">Bright Yellow</option>
+				<option value="15">Bright White</option>
+			</select>
+			Background color: <select id="bgcolor">
+				<option value="0" selected>Black</option>
+				<option value="1">Blue</option>
+				<option value="2">Green</option>
+				<option value="3">Cyan</option>
+				<option value="4">Red</option>
+				<option value="5">Magenta</option>
+				<option value="6">Yellow</option>
+				<option value="7">White</option>
+				<option value="8">Gray</option>
+				<option value="9">Bright Blue</option>
+				<option value="10">Bright Green</option>
+				<option value="11">Bright Cyan</option>
+				<option value="12">Bright Red</option>
+				<option value="13">Bright Magenta</option>
+				<option value="14">Bright Yellow</option>
+				<option value="15">Bright White</option>
+			</select>
+		</p>
+<pre class="source assembly"><span class="comment">; Create custom character in slot <span class="slotname">00</span></span>
+<span class="opcode">set</span> [0x<span id="charmem1">8180</span>], 0x<span id="code1">0354</span>
+<span class="opcode">set</span> [0x<span id="charmem2">8181</span>], 0x<span id="code2">a403</span>
 
-<span class="opcode">set</span> [0x8000], 0xf100 <span class="comment">; Character 0, White foreground, blue background</span>
+<span class="opcode">set</span> [0x8000], 0x<span id="charcol">f1</span><span class="charslot">00</span> <span class="comment">; Character <span class="slotname">00</span>, <span id="fgname">White</span> foreground, <span id="bgname">blue</span> background</span>
 </pre>
 		<p><em>Note that this feature is not part of the DCPU-16 official specification yet!</em> It has been ascertained that this functionality will be available <a href="http://0x10cwiki.com/wiki/Video_RAM#Leaked_.jar_specification" rel="external">due to leaked JAR files</a>, but may change quickly. This page will strive to keep up with the official specification, when it's officially released.</p>
 		<hr />
